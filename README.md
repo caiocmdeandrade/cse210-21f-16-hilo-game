@@ -35,7 +35,7 @@ root                    (project root folder)
 
 ## Authors
 ---
-Caio Andrade - caiocma3@hotmail.com
-Ezequiel Iannone - c.ezeiannone@gmail.com
-Kevin Augusto - trunks.dial@gmail.com
-Celeste Popoca - celeste3popoca@gmail.com
+* Caio Andrade - caiocma3@hotmail.com
+* Ezequiel Iannone - c.ezeiannone@gmail.com
+* Kevin Augusto - trunks.dial@gmail.com
+* Celeste Popoca - celeste3popoca@gmail.com
