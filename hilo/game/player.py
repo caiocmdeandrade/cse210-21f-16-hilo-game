@@ -34,8 +34,7 @@ class Player:
             if option.lower() == "h" or option.lower() == "l":
                 break
             else:
-                print(colorama.Fore.RED +"Please answer the question with a right option!"+ colorama.Fore.RESET)
-                print()
+                print(f'{colorama.Fore.RED}Please answer the question with a right option!{colorama.Fore.RESET}\n')
         return option
         
 #Commented
