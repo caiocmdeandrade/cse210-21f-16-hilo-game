@@ -35,4 +35,4 @@ root                    (project root folder)
 
 ## Authors
 ---
-* TODO: Ezequiel Iannone - c.ezeiannone@gmail.com
+- Ezequiel Iannone - c.ezeiannone@gmail.com
