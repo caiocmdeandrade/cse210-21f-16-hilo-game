@@ -11,7 +11,6 @@ class Director:
     Attributes:
         keep_playing (boolean): Whether or not the player wants to keep playing.
         player (Player): An instance of the class of objects known as Player.
-        cards (List): The deck of the 13 cards.
         one_card (int): Use to keep track of the value from the displayed card.
         what_you_deserve (int) Represents the points earned or lost in each round
     """
@@ -53,7 +52,7 @@ class Director:
             Args:
                 self (player): An instance of Player.
             Returns:
-                boolean: True if the deck has cards and the player more than zero points.
+                boolean: True if the player has more than zero points.
                 Otherwise, it returns false.
             """
             if self.player.able_to_play():
