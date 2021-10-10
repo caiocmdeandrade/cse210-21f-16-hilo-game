@@ -1,4 +1,5 @@
 import random
+import colorama
 from game.player import Player
 
 #Commented
@@ -22,10 +23,11 @@ class Director:
             self (Director): an instance of Director.
         """
         self.keep_playing = True
-        self.player = Player("Suffered student")
+        self.player = Player("Dear student")
         self.cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
         self.one_card = 0
         self.what_you_deserve = 0
+        colorama.init()
         
 #Commented
     def start_game(self):
@@ -48,7 +50,7 @@ class Director:
             self.one_card = random.choice(self.cards)
             self.cards.remove(self.one_card)
         else:
-            print("There are no more cards in the deck!")
+            print(colorama.Fore.RED +"There are no more cards in the deck!"+ colorama.Fore.RESET)
 
 #Commented
     def can_play(self):
@@ -78,11 +80,11 @@ class Director:
         
         # stores the previous and current card, and prompts and recieves the answer from the player
         previous_card = self.one_card
-        print(f"The previous card was: {previous_card}")
+        print(colorama.Fore.YELLOW +f"The previous card was: {previous_card}"+ colorama.Fore.RESET)
         answer = self.player.choose_if_hi_lo()
         self.get_a_card()
         current_card = self.one_card
-        print(f"The next card is: {current_card}")
+        print(colorama.Fore.YELLOW +f"The next card is: {current_card}"+ colorama.Fore.RESET)
 
         # calculates the points the player deserves
         if (answer == "h") and (current_card > previous_card):
@@ -113,7 +115,7 @@ class Director:
         if self.player.points < 0:
             self.player.points = 0
 
-        print(f"Your score is: {self.player.points}")
+        print(colorama.Fore.BLUE +f"Your score is: {self.player.points}"+ colorama.Fore.RESET)
 
         # If this object can play...
         if self.can_play():
@@ -127,16 +129,16 @@ class Director:
                     break
                 elif choice.lower() == "n":
                     print()
-                    print("The game is over!!")
-                    print("Thanks to test our game!")
+                    print(colorama.Fore.GREEN +"The game is over!!"+ colorama.Fore.RESET)
+                    print(colorama.Fore.GREEN +"Thanks to test our game!"+ colorama.Fore.RESET)
                     print()
                     self.keep_playing = False     
                     break
                 else:
-                    print("Please answer the question with a right option!")
+                    print(colorama.Fore.RED +"Please answer the question with a right option!"+ colorama.Fore.RESET)
         else:
             print()
-            print("The game is over!!")
-            print("Thanks to test our game!")
+            print(colorama.Fore.GREEN +"The game is over!!"+ colorama.Fore.RESET)
+            print(colorama.Fore.GREEN +"Thanks to test our game!"+ colorama.Fore.RESET)
             print()
             self.keep_playing = False

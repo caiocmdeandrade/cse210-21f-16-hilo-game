@@ -1,3 +1,5 @@
+import colorama
+
 #Commented
 class Player:
     """A code template for a person who plays the game. The responsibility of 
@@ -17,6 +19,7 @@ class Player:
         """
         self.name = name
         self.points = 300
+        colorama.init()
 
 #Commented
     def choose_if_hi_lo(self):
@@ -31,7 +34,7 @@ class Player:
             if option.lower() == "h" or option.lower() == "l":
                 break
             else:
-                print("Please answer the question with a right option!")
+                print(colorama.Fore.RED +"Please answer the question with a right option!"+ colorama.Fore.RESET)
                 print()
         return option
         
