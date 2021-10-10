@@ -24,7 +24,6 @@ class Director:
         """
         self.keep_playing = True
         self.player = Player("Dear student")
-        self.cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
         self.one_card = 0
         self.what_you_deserve = 0
         colorama.init()
@@ -46,11 +45,7 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
-        if (len(self.cards) > 0):
-            self.one_card = random.choice(self.cards)
-            self.cards.remove(self.one_card)
-        else:
-            print(colorama.Fore.RED +"There are no more cards in the deck!"+ colorama.Fore.RESET)
+        self.one_card = random.randint(1,13)
 
 #Commented
     def can_play(self):
@@ -61,7 +56,7 @@ class Director:
                 boolean: True if the deck has cards and the player more than zero points.
                 Otherwise, it returns false.
             """
-            if (len(self.cards) > 0) and (self.player.able_to_play()):
+            if self.player.able_to_play():
                 return True
             else:
                 return False
@@ -74,17 +69,15 @@ class Director:
             self (Director): An instance of Director.
         """
         # called the first time to show a card and stored its value
-        if len(self.cards) == 13:
-            self.get_a_card()
-            print()
+        self.get_a_card()
         
         # stores the previous and current card, and prompts and recieves the answer from the player
         previous_card = self.one_card
-        print(colorama.Fore.YELLOW +f"The previous card was: {previous_card}"+ colorama.Fore.RESET)
+        print(f'\n{colorama.Fore.YELLOW}The previous card was: {previous_card}{colorama.Fore.RESET}')
         answer = self.player.choose_if_hi_lo()
         self.get_a_card()
         current_card = self.one_card
-        print(colorama.Fore.YELLOW +f"The next card is: {current_card}"+ colorama.Fore.RESET)
+        print(f'{colorama.Fore.YELLOW}The next card is: {current_card}{colorama.Fore.RESET}')
 
         # calculates the points the player deserves
         if (answer == "h") and (current_card > previous_card):
@@ -115,30 +108,24 @@ class Director:
         if self.player.points < 0:
             self.player.points = 0
 
-        print(colorama.Fore.BLUE +f"Your score is: {self.player.points}"+ colorama.Fore.RESET)
+        print(f'{colorama.Fore.BLUE}Your score is: {self.player.points}{colorama.Fore.RESET}')
 
         # If this object can play...
         if self.can_play():
             while True:
                 choice = input(f"'{self.player.name}', do you want to continue playing? [y/n] ")
                 if choice.lower() == "y":
-                    print()
-                    print("...")
-                    print()
+                    print('\n...\n')
                     self.keep_playing = True
                     break
                 elif choice.lower() == "n":
-                    print()
-                    print(colorama.Fore.GREEN +"The game is over!!"+ colorama.Fore.RESET)
-                    print(colorama.Fore.GREEN +"Thanks to test our game!"+ colorama.Fore.RESET)
-                    print()
+                    print(f'\n{colorama.Fore.GREEN}The game is over!!{colorama.Fore.RESET}')
+                    print(f'{colorama.Fore.GREEN}Thanks to test our game!{colorama.Fore.RESET}\n')
                     self.keep_playing = False     
                     break
                 else:
-                    print(colorama.Fore.RED +"Please answer the question with a right option!"+ colorama.Fore.RESET)
+                    print(f'{colorama.Fore.RED}Please answer the question with a right option!{colorama.Fore.RESET}')
         else:
-            print()
-            print(colorama.Fore.GREEN +"The game is over!!"+ colorama.Fore.RESET)
-            print(colorama.Fore.GREEN +"Thanks to test our game!"+ colorama.Fore.RESET)
-            print()
+            print(f'\n{colorama.Fore.GREEN}The game is over!!{colorama.Fore.RESET}')
+            print(f'{colorama.Fore.GREEN}Thanks to test our game!{colorama.Fore.RESET}\n')
             self.keep_playing = False
