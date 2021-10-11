@@ -68,7 +68,8 @@ class Director:
             self (Director): An instance of Director.
         """
         # called the first time to show a card and stored its value
-        self.get_a_card()
+        if self.one_card < 1:
+            self.get_a_card()
         
         # stores the previous and current card, and prompts and recieves the answer from the player
         previous_card = self.one_card
